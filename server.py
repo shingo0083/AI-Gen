@@ -40,7 +40,7 @@ PORT = _env_int("WF_PORT", 8069)
 HOST = _env_str("WF_HOST", "127.0.0.1")
 
 # 上游 API
-DEFAULT_API_BASE_URL = _env_str("WF_API_BASE_URL", "http://156.238.229.55:3000")
+DEFAULT_API_BASE_URL = _env_str("WF_API_BASE_URL", "")
 MODEL = _env_str("WF_MODEL", "gemini-3-pro-image-preview")
 
 HISTORY_LIMIT = _env_int("WF_HISTORY_LIMIT", HISTORY_LIMIT)
