@@ -41,6 +41,11 @@
 - 🔌 可配置的 API 入口（Key / Base URL）
 - 🧩 易扩展：可以继续接入不同模型、不同推理后端
 
+## 🖼️ 界面截图
+
+<p align="center">
+  <img src="./assets/screenshot_main.png?v=1" alt="AI-Gen UI Preview" width="900" />
+</p>
 
 ## 🚀 快速开始（Windows）
 
