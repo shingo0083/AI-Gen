@@ -26,7 +26,7 @@
 ```bat
 run.bat
 它会使用：
-py -3.10 -m uvicorn server:app --host 127.0.0.1 --port 8069 --reload
+py -3.10 -m uvicorn server:app --host 127.0.0.1 --port 8069 --no-use-colors
 启动后打开：
 http://127.0.0.1:8069/
 
@@ -64,3 +64,4 @@ Notes for Contributors
 
 
 > 注意：请勿将真实 key 提交到 GitHub。
+
