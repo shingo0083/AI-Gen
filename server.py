@@ -228,7 +228,40 @@ def extract_image_data(result: dict):
 from fastapi import Request
 
 @app.get("/api/v1/health")
+
 @app.get("/api/v1/init")
+
+@app.get("/api/v1/capabilities")
+
+def capabilities_v1(request: Request):
+    data = {
+        "providers": [
+            {
+                "id": "default",
+                "name": "WaifuGen Local",
+                "models": [MODEL],
+            }
+        ],
+        "pipelines": ["default"],
+        "aspect_ratios": ["1:1", "3:4", "4:3", "9:16", "16:9"],
+        "features": {
+            "ref_image": True,
+            "metadata": True,
+            "remember_api_key": True,
+        },
+    }
+
+    return {
+        "ok": True,
+        "data": data,
+        "error": None,
+        "meta": {
+            "api_version": API_VERSION,
+            "request_id": request.state.request_id,
+            "ts": int(time.time() * 1000),
+        },
+    }
+
 
 def init_v1(request: Request):
     data = {"history": load_history(), "has_saved_key": bool(load_api_key())}
