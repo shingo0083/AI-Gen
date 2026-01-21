@@ -1,7 +1,11 @@
 # 🌸 AI-Gen / WaifuGen
 
 <p align="center">
-  <img src="./assets/banner.png" alt="AI-Gen Banner" />
+  <img src="./assets/banner.png?v=20260151" alt="AI-Gen Banner" />
+</p>
+
+<p align="center">
+  <img width="140" src="./static/images/logo.png?v=20260151" alt="AI-Gen Logo" />
 </p>
 
 > 🎨 一个本地启动的 AI 艺术创作工具  
