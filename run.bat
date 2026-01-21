@@ -46,7 +46,8 @@ echo.
 REM Make console output encoding stable
 set PYTHONIOENCODING=utf-8
 
-py -3.10 -m uvicorn server:app --host 127.0.0.1 --port 8069 --reload --no-use-colors
+py -3.10 -m uvicorn server:app --host 127.0.0.1 --port 8069 --no-use-colors
+
 
 echo.
 echo Server process ended (exit code %ERRORLEVEL%).

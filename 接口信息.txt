@@ -1,5 +1,0 @@
-端点：http://156.238.229.55:3000/
-
-Key：sk-wvKwqOzxmi8nKcwmCPRcvCC3gnSfIXWFSetsn196Ai3m66jo
-
-查询用量：http://newapicha-2.xiaochuang.cc/

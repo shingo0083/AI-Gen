@@ -26,11 +26,16 @@ Thumbs.db
 # Runtime generated (important)
 static/history/history.json
 static/history/*.json
+static/history/*.png
+static/history/*.jpg
+static/history/*.jpeg
+static/history/*.webp
 
 # Optional: if you generate outputs locally
 outputs/
 tmp/
 
 # Secrets (DO NOT COMMIT)
+notes/
 secrets.json
 *.secrets.json

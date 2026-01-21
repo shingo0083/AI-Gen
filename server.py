@@ -351,4 +351,4 @@ def generate(req: GenerateRequest):
 
 if __name__ == "__main__":
     print(f"🚀 启动成功！请在浏览器访问: http://{HOST}:{PORT}")
-uvicorn.run("server:app", host=HOST, port=PORT, reload=True, log_config=None, access_log=False)
+    uvicorn.run("server:app", host=HOST, port=PORT, reload=False, log_config=None, access_log=False)
