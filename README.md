@@ -34,7 +34,7 @@ http://127.0.0.1:8069/
 Run (Manual)
 在项目根目录执行：
 py -3.10 -m pip install -r requirements.txt
-py -3.10 -m uvicorn server:app --host 127.0.0.1 --port 8069 --reload --no-use-colors
+py -3.10 -m uvicorn server:app --host 127.0.0.1 --port 8069 --no-use-colors
 
 
 Project Structure (Simplified)
@@ -64,4 +64,5 @@ Notes for Contributors
 
 
 > 注意：请勿将真实 key 提交到 GitHub。
+
 
