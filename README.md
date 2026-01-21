@@ -4,7 +4,7 @@
 > FastAPI 后端 + 本地静态前端 UI，专注 Waifu / 二次元图像生成体验
 
 <p align="center">
-  <img width="220" src="https://raw.githubusercontent.com/shingo0083/AI-Gen/main/static/logo.png" alt="AI-Gen Logo">
+  <img width="220" src="./static/images/logo.png" alt="AI-Gen Logo">
 </p>
 
 <p align="center">
