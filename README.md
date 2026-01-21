@@ -1,4 +1,4 @@
-# WF (WaifuGen) - Local Prompt/Image Tool
+# AI-Gen - Local Prompt/Image Tool
 
 一个本地运行的工具：前端静态页面 + FastAPI/Uvicorn 后端，支持生成、历史记录与数据驱动配置。
 
@@ -61,5 +61,6 @@ Notes for Contributors
 - 复制 `secrets.example.json` 为 `secrets.json`
 - 填入你自己的 `api_key`
 - 如需自定义 API 端点，请在 `secrets.json` 中填写或按 server.py 的说明修改/设置环境变量
+
 
 > 注意：请勿将真实 key 提交到 GitHub。
