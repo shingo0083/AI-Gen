@@ -10,12 +10,14 @@ import uvicorn
 import re
 
 from PIL import Image, PngImagePlugin
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from typing import Optional, Dict, Any
+
 
 DEFAULT_HISTORY_LIMIT = 100
 
@@ -62,6 +64,20 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 logger = logging.getLogger("WaifuLocal")
 
 app = FastAPI()
+
+# ===== API 版本与请求编号（接口稳定化基础）=====
+import uuid
+from fastapi import Request
+
+API_VERSION = "1.0"
+
+@app.middleware("http")
+async def add_request_id(request: Request, call_next):
+    request.state.request_id = uuid.uuid4().hex
+    response = await call_next(request)
+    response.headers["X-Request-Id"] = request.state.request_id
+    response.headers["X-API-Version"] = API_VERSION
+    return response
 
 _default_origins = [
     f"http://localhost:{PORT}",
@@ -208,6 +224,37 @@ def extract_image_data(result: dict):
 
 
 # --- 路由 ---
+
+from fastapi import Request
+
+@app.get("/api/v1/health")
+@app.get("/api/v1/init")
+
+def init_v1(request: Request):
+    data = {"history": load_history(), "has_saved_key": bool(load_api_key())}
+    return {
+        "ok": True,
+        "data": data,
+        "error": None,
+        "meta": {
+            "api_version": API_VERSION,
+            "request_id": request.state.request_id,
+            "ts": int(time.time() * 1000),
+        },
+    }
+
+def health_v1(request: Request):
+    return {
+        "ok": True,
+        "data": {"status": "ok"},
+        "error": None,
+        "meta": {
+            "api_version": API_VERSION,
+            "request_id": request.state.request_id,
+            "ts": int(time.time() * 1000),
+        },
+    }
+
 @app.get("/")
 def read_index():
     return FileResponse(os.path.join(BASE_DIR, "index.html"))
@@ -370,6 +417,77 @@ def generate(req: GenerateRequest):
         logger.error(f"Error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.post("/api/v1/generate")
+def generate_v1(req: GenerateRequest, request: Request):
+    # 统一 meta
+    meta_obj = {
+        "api_version": API_VERSION,
+        "request_id": request.state.request_id,
+        "ts": int(time.time() * 1000),
+    }
+
+    # 1) API Key 检查（与旧接口一致）
+    current_key = (req.api_key or load_api_key() or "").strip()
+    if not current_key:
+        return JSONResponse(
+            status_code=400,
+            content={
+                "ok": False,
+                "data": None,
+                "error": {
+                    "code": "MISSING_API_KEY",
+                    "message": "请填写 API Key",
+                    "retryable": False,
+                },
+                "meta": meta_obj,
+            },
+        )
+
+    # 2) 记住 API Key（与你旧接口一致）
+    if getattr(req, "remember_key", False) and req.api_key and req.api_key not in ("true", "false"):
+        if req.api_key.strip() != load_api_key():
+            save_api_key(req.api_key.strip())
+
+    # 3) 复用旧的 generate 逻辑（它会 return record 或 raise HTTPException）
+    try:
+        result = generate(req)
+        return {
+            "ok": True,
+            "data": result,
+            "error": None,
+            "meta": meta_obj,
+        }
+    except HTTPException as e:
+        # 把旧的 detail 包成 v1 错误对象
+        status = e.status_code if isinstance(e.status_code, int) else 500
+        return JSONResponse(
+            status_code=status,
+            content={
+                "ok": False,
+                "data": None,
+                "error": {
+                    "code": "BAD_REQUEST" if status < 500 else "UPSTREAM_ERROR",
+                    "message": str(e.detail),
+                    "retryable": status >= 500,
+                },
+                "meta": meta_obj,
+            },
+        )
+    except Exception as e:
+        logger.exception("Unhandled error in /api/v1/generate")
+        return JSONResponse(
+            status_code=500,
+            content={
+                "ok": False,
+                "data": None,
+                "error": {
+                    "code": "INTERNAL_ERROR",
+                    "message": "服务器内部错误",
+                    "retryable": False,
+                },
+                "meta": meta_obj,
+            },
+        )
 
 if __name__ == "__main__":
     print(f"🚀 启动成功！请在浏览器访问: http://{HOST}:{PORT}")
