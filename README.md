@@ -1,68 +1,76 @@
-# AI-Gen - Local Prompt/Image Tool
+# 🌸 AI‑Gen / WaifuGen
 
-一个本地运行的工具：前端静态页面 + FastAPI/Uvicorn 后端，支持生成、历史记录与数据驱动配置。
+> 🎨 一个本地运行的 AI 艺术创作工具  
+> FastAPI 后端 + 本地静态前端 UI，专注 Waifu / 二次元图像生成体验
 
-## Features
-- 本地运行（无云依赖）
-- 数据驱动（catalog / styles）
-- 生成记录 history（本地保存）
-- 可扩展的数据结构与 UI
+<p align="center">
+  <img width="220" src="https://raw.githubusercontent.com/shingo0083/AI-Gen/main/static/logo.png" alt="AI-Gen Logo">
+</p>
 
----
-
-## Requirements
-- Windows / macOS / Linux
-推荐：3.10
-允许：3.10+
-- 已安装依赖：FastAPI、Uvicorn（见 requirements.txt）
-
-> Windows 用户如果系统里有多个 Python，推荐使用 `py` launcher 指定版本（例如 `py -3.10`）。
+<p align="center">
+  <a href="https://github.com/shingo0083/AI-Gen/stargazers"><img src="https://img.shields.io/github/stars/shingo0083/AI-Gen.svg" /></a>
+  <img src="https://img.shields.io/badge/python-3.10%2B-blue" />
+  <img src="https://img.shields.io/badge/FastAPI-Backend-success" />
+  <img src="https://img.shields.io/badge/License-MIT-lightgrey" />
+</p>
 
 ---
 
-## Run (Windows, 推荐)
-你可以直接使用项目内的启动脚本（如果已存在）：
+## 🚀 项目简介
 
-```bat
+**AI‑Gen / WaifuGen** 是一个为 AI 艺术创作者与二次元爱好者打造的本地图像生成工具：
+
+✨ 本地运行，无需云端服务  
+✨ 数据驱动（可扩展 catalog / style）  
+✨ 自动保存生成历史记录  
+✨ 结构清晰，易于扩展与二次元风格定制
+
+---
+
+## 🧠 功能亮点
+
+- 💻 本地启动：无需网络或外部 API Key  
+- 🎨 自由 Prompt 输入：支持各种创作风格  
+- 📜 生成历史记录：自动保存用户生成数据  
+- 📂 可扩展的数据结构：可自定义 catalog / styles  
+- 🔧 易于二次开发：前端静态文件 & Python 后端分离
+
+---
+
+## 📁 仓库结构
+
+```text
+AI-Gen/
+├── server.py
+├── static/
+│   ├── index.html
+│   ├── css/
+│   ├── js/
+│   ├── images/
+│   └── history/
+├── requirements.txt
+├── run.bat
+├── secrets.example.json
+└── README.md
+```
+
+---
+
+## 📦 快速开始
+
+```bash
+git clone https://github.com/shingo0083/AI-Gen.git
+cd AI-Gen
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
 run.bat
-它会使用：
-py -3.10 -m uvicorn server:app --host 127.0.0.1 --port 8069 --no-use-colors
-启动后打开：
-http://127.0.0.1:8069/
+```
 
+浏览器打开： http://127.0.0.1:8069/
 
-Run (Manual)
-在项目根目录执行：
-py -3.10 -m pip install -r requirements.txt
-py -3.10 -m uvicorn server:app --host 127.0.0.1 --port 8069 --no-use-colors
+---
 
+## 📄 License
 
-Project Structure (Simplified)
-
-server.py：FastAPI app / API
-static/：前端静态资源（HTML/CSS/JS）
-static/js/app/：store/reducer/selectors（状态与分层）
-static/js/domain/：领域逻辑（如 prompt 构建）
-static/js/infra/：API / 存储等基础设施封装
-static/history/：本地历史记录（建议不提交到 git）
-
-Notes for Contributors
-
-请不要提交 static/history/history.json（属于个人运行数据）
-提交前建议跑一遍页面，确认无控制台报错
-数据修改（catalog/styles）建议遵守既有结构
-
-
-## Configuration (API Base URL & Key)
-本项目不提供第三方 API Key 与 API 端点，请自行准备。
-
-你可以创建 `secrets.json`（不要提交到 git）：
-
-- 复制 `secrets.example.json` 为 `secrets.json`
-- 填入你自己的 `api_key`
-- 如需自定义 API 端点，请在 `secrets.json` 中填写或按 server.py 的说明修改/设置环境变量
-
-
-> 注意：请勿将真实 key 提交到 GitHub。
-
-
+MIT License © 2026
