@@ -1,0 +1,209 @@
+
+export const DB = {
+    styles_master: {
+                "北条司 (Hojo Tsukasa)": "art by Hojo Tsukasa, 80s anime style, realistic facial features, retro city pop vibe",
+                "桂正和 (Masakazu Katsura)": "art by Masakazu Katsura, soft shading, detailed female figure, romantic atmosphere",
+                "鸟山明 (Akira Toriyama)": "art by Akira Toriyama, sharp lines, mechanical details, cel shaded, retro sci-fi",
+                "井上雄彦 (Takehiko Inoue)": "art by Takehiko Inoue, realistic proportions, sketch style lines, intense expression",
+                "村田莲尔 (Range Murata)": "art by Range Murata, steampunk, retro-futuristic, soft textures, detailed accessories",
+                "贞本义行 (Yoshiyuki Sadamoto)": "art by Yoshiyuki Sadamoto, evangelion style, clean lines, slender figures, 90s anime",
+                "米山舞 (Mai Yoneyama)": "art by Mai Yoneyama, high contrast, vibrant colors, dynamic angle, liquid texture, wide angle lens, chromatic aberration",
+                "副岛成记 (Persona 5)": "art by Shigenori Soejima, persona 5 style, stylish, pop art, graphic design elements, sharp eyes, black and red aesthetic",
+                "CLAMP (华丽少女漫)": "art by CLAMP, cardcaptor sakura style, detailed frills, intricate accessories, dreamy, shoujo manga, feathers and petals",
+                "阿尔丰斯·慕夏 (Art Nouveau)": "art by Alphonse Mucha, art nouveau, intricate floral borders, elegant curves, stained glass effect, vintage poster style",
+                "天野喜孝 (Yoshitaka Amano)": "art by Yoshitaka Amano, watercolor style, ethereal, fantasy, intricate details, artistic"
+            },
+            styles_studio: {
+                "京都动画 (KyoAni)": "art by Kyoto Animation, moe style, sparkling eyes, emotional lighting, high quality production",
+                "新海诚 (Makoto Shinkai)": "art by Makoto Shinkai, hyper detailed background, cinematic lighting, lens flare, emotional",
+                "扳机社 (TRIGGER)": "art by Studio Trigger, hiroyuki imaishi, bold lines, neon colors, exaggerated perspective, dynamic pose",
+                "飞碟社 (ufotable)": "art by ufotable, high contrast, digital effects, dynamic lighting, cinematic action",
+                "棕色尘埃 (Brown Dust)": "art by Brown Dust 2, neowiz, high quality 2D game art, detailed character illustration, rich coloring, fantasy aesthetic, spine animation style, dynamic angle",
+                "吉卜力 (Ghibli)": "art by Studio Ghibli, Hayao Miyazaki, hand drawn style, lush background, vibrant colors, fantasy"
+            },
+            styles_unique: {
+                "Mika Pikazo (Vibrant)": "art by Mika Pikazo, vibrant colors, geometric patterns, pop art style, energetic",
+                "Wlop (Digital Fantasy)": "art by wlop, digital painting, fantasy style, soft lighting, dreamy atmosphere, princess",
+                "赛博朋克 (Cyberpunk)": "cyberpunk 2077 style, neon lights, chrome metal, futuristic city, high tech, rain, reflection",
+                "水墨画 (Ink Wash)": "traditional chinese ink wash painting, sumi-e, brush strokes, minimalism, black and white with red accents",
+                "厚涂 (Impasto)": "impasto oil painting, thick brush strokes, texture, realistic lighting, semi-realistic anime",
+                "像素风 (Pixel Art)": "pixel art, 16-bit, retro game style, dithering, low res",
+                "蒸汽波 (Vaporwave)": "vaporwave aesthetic, lo-fi, neon pink and blue, glitch art, 90s retro computer graphics",
+                "虚幻引擎5 (UE5 Render)": "unreal engine 5 render, lumen global illumination, nanite geometry, 8k resolution, photorealistic, ray tracing, cinematic lighting, 3d model, hyper realistic, octane render",
+                "Tony Taka (Glossy)": "art by Tony Taka, glossy skin, perfect anatomy, bishoujo, high gloss"
+            },
+            // === 3. 修复：服装数据库 (键值对必须对应) ===
+    CLOTHING: {
+            // --- 制服与职业 ---
+        "jk_uniform": { label: "JK制服 (Seifuku)", prompt: "wearing a high-quality seifuku school uniform, navy blue sailor collar with white stripes, crisp cotton shirt, knife-pleated skirt, red ribbon tie, soft fabric texture" },
+        "maid": { label: "高定女仆 (Maid)", prompt: "wearing a detailed victorian maid outfit, intricate white lace frills, black satin dress with white apron, puffy sleeves, headpiece, gothic aesthetics" },
+        "nurse": { label: "治愈系护士 (Nurse)", prompt: "wearing a form-fitting pale pink nurse uniform, translucent fabric details, white thigh-high stockings, nurse cap, medical aesthetics, sterile and clean look" },
+        "police": { label: "特警制服 (Tactical Police)", prompt: "wearing a tactical police uniform, tight pencil skirt, leather belt with handcuffs, badge, officer hat, authoritative look, crisp fabric lines" },
+        "ol_suit": { label: "丝绸职业装 (Office Lady)", prompt: "wearing a semi-sheer white silk blouse, tight black pencil skirt, black sheer pantyhose, professional office attire, realistic silk texture, office siren style" },
+        
+        // --- 幻想与特殊 ---
+        "bunny_girl": { label: "漆皮兔女郎 (Bunny Girl)", prompt: "wearing a high-gloss black latex bunny suit, fishnet tights, reflective surface, bunny ears, white cuffs and collar, playboy aesthetics, studio lighting reflection" },
+        "succubus": { label: "暗夜魅魔 (Succubus)", prompt: "wearing a revealing gothic bondage outfit, leather straps, bat wings, heart-shaped tail, demonic horns, seductive expression, dark fantasy style" },
+        "armor": { label: "圣骑士铠甲 (Paladin Armor)", prompt: "wearing intricate silver plate armor with gold engravings, glowing blue rune details, metallic reflection, scratches and wear, heavy metal texture, fantasy knight" },
+        "miko": { label: "神道巫女 (Miko)", prompt: "wearing traditional japanese shrine maiden outfit, bright red hakama pants, white kimono top, wide sleeves, sacred atmosphere, fabric flowing in wind" },
+        "idol": { label: "闪耀偶像 (Idol)", prompt: "wearing a complex idol stage costume, layers of iridescent frills, holographic ribbons, sequins, lace details, vibrant colors, glowing under stage lights" },
+        "gothic_lolita": { label: "哥特萝莉 (Gothic Lolita)", prompt: "wearing a black Victorian gothic lolita dress, layers of intricate lace and ruffles, velvet texture, bonnet, mary jane shoes, dark fairytale aesthetic" },
+
+        // --- 时尚与日常 ---
+        "streetwear": { label: "街头机能 (Techwear)", prompt: "wearing oversized techwear hoodie, many straps and buckles, cargo pants, matte black fabric, urban ninja style, futuristic streetwear" },
+        "off_shoulder": { label: "露肩毛衣 (Off-shoulder)", prompt: "wearing a white off-shoulder knitted sweater, coarse wool texture, collarbone visible, soft and cozy atmosphere, ribbed fabric details" },
+        "qipao": { label: "刺绣旗袍 (Qipao)", prompt: "wearing a form-fitting silk cheongsam, golden dragon embroidery, high slit revealing leg, pearl buttons, luxurious satin texture, oriental beauty" },
+        "hanfu": { label: "流光汉服 (Hanfu)", prompt: "wearing traditional chinese hanfu, translucent silk robes, wide sleeves, flowing fabric, intricate embroidery, fairy-like aesthetic, ethereal atmosphere" },
+        "gym_wear": { label: "紧身瑜伽 (Yoga Set)", prompt: "wearing a seamless tight yoga set, sports bra and leggings, elastic synthetic fabric, moisture wicking texture, athleisure, body contouring" },
+        "swimsuit_school": { label: "死库水 (School Swimsuit)", prompt: "wearing a classic dark blue japanese school swimsuit (sukumizu), slick wet texture, name tag on chest, clinging to body, pool water drops" },
+        "bikini": { label: "微型比基尼 (Micro Bikini)", prompt: "wearing a string bikini, high quality swimwear fabric, sun tan lines, summer vibe, exposing skin, detailed skin texture" },
+        "wedding": { label: "高定婚纱 (Wedding)", prompt: "wearing a magnificent white wedding dress, layers of tulle and lace, long veil trailing on ground, intricate floral embroidery, pure and holy atmosphere" },
+        "latex_suit": { label: "胶衣 (Latex Suit)", prompt: "wearing a full-body black latex catsuit, extreme high gloss, tight and form-fitting, reflection of environment, fetish fashion" }
+    },
+    accessories: {
+                "红框眼镜 (Red Glasses)": "red framed glasses, megane",
+                "无框眼镜 (Rimless Glasses)": "rimless glasses, intellectual look",
+                "猫耳 (Cat Ears)": "cat ears, nekomimi, fluffy",
+                "光环 (Halo)": "glowing halo above head, angel wings",
+                "防毒面具 (Gas Mask)": "gas mask, post-apocalyptic",
+                "耳机 (Headphones)": "large headphones around neck",
+                "黑丝 (Black Silk)": "black silk stockings, pantyhose, legwear",
+                "渔网袜 (Fishnet)": "fishnet stockings, sexy",
+                "吊带袜 (Garter Belt)": "garter belt, thigh highs, absolute territory",
+                "项圈 (Choker)": "black choker, leather collar"
+            },
+    actions: {
+                // --- 静态魅力 ---
+        "站立 (Standing)": "standing pose, confident posture, looking at viewer, detailed face, weight on one leg",
+        "鸭子坐 (Duck Sitting)": "duck sitting pose (w-sitting), kneeling on floor, knees together feet apart, vulnerable and cute, looking up at camera",
+        "回眸 (Looking Back)": "looking back over shoulder, twisting torso, dynamic hair flow, neck curve visible, intense eye contact", 
+        "自拍 (Selfie)": "holding smartphone high angle, taking a selfie, peace sign, winking, depth of field focus on face, phone screen visible",
+        "伸懒腰 (Stretching)": "stretching arms overhead, arching back, exposing midriff, yawning, relaxed body line, armpits visible",
+        "睡眠 (Sleeping)": "sleeping soundly, curled up pose, peaceful expression, soft breathing, messy hair, vulnerable",
+
+        // --- 动态交互 ---
+        "比心 (Heart Hands)": "making a heart shape with both hands near cheek, smiling warmly, focus on fingers, affectionate gesture",
+        "壁咚 (Kabedon)": "kabedon pose, one hand against the wall, leaning forward, trapping the viewer, romantic tension, close-up face",
+        "推眼镜 (Adjusting Glasses)": "adjusting glasses with middle finger, lens reflection, intellectual look, slight smirk, plotting something",
+        "进食 (Eating)": "eating delicious food, holding utensils, stuffed cheeks (hamster check), happy expression, food details",
+
+        // --- 战斗姿态 (High Octane) ---
+        "拔刀 (Katana Draw)": "iaido stance, hand on katana hilt, body lowered, intense focus, ready to strike, depth of field",
+        "拔刀斩 (Dimensional Slash)": "action shot, mid-swing katana slash, motion blur, glowing blade trajectory, cutting through reality, dynamic angle, particle effects",
+        "透视一拳 (Foreshortening Punch)": "throwing a punch at camera, extreme foreshortening, fist is huge in foreground, dynamic action lines, impact frame",
+        "死神镰刀 (Reaper Scythe)": "wielding a giant scythe, twisting body, dynamic fabric flow, menacing silhouette, gothic atmosphere",
+        "双刀流 (Dual Wielding)": "holding dual blades, crossed arms stance, wind blowing hair, assassin vibe, sharp focus on weapons",
+        "持枪 (Gunpoint)": "pointing handgun at viewer, focus on gun barrel, one eye closed aiming, tactical stance, trigger finger discipline",
+        "枪斗术 (Gun Kata)": "mid-air acrobatic shooting, dual pistols, body twisting, bullet casings flying, muzzle flash, matrix style action",
+        "狙击锁定 (Sniper)": "lying prone, looking through sniper scope, camouflage, focus lines, intense concentration, lens glint",
+
+        // --- 魔法与超能 ---
+        "浮空 (Levitation)": "floating in mid-air, toes pointing down, weightless hair and clothes, magical aura, anti-gravity",
+        "施法 (Casting Spell)": "chanting a spell, hands glowing with magic energy, magic circle appearing, wind pressure, floating particles",
+        "领域展开 (Domain Expansion)": "performing jujutsu hand sign, dark energy erupting, reality distortion, crazy smile, cinematic lighting, ominous atmosphere",
+        "蓄力爆发 (Power Up)": "screaming and powering up, glowing aura surrounding body, ground cracking, debris floating, dragon ball style energy",
+        "圣女祈祷 (Prayer)": "clasping hands in prayer, eyes closed, holy light rays from above, feathers falling, serene and sacred atmosphere",
+        "英雄落地 (Superhero Landing)": "three-point landing pose, impact crater on ground, dust clouds rising, dynamic crouch, looking up intensely"
+    },
+    scenes: {
+                // --- 城市与日常 ---
+        "涉谷街头 (Shibuya)": "busy Shibuya crossing at night, neon signs reflecting on wet asphalt, crowd in background, cinematic city lights, rain droplets",
+        "樱花坂道 (Cherry Blossoms)": "school road lined with cherry blossom trees, petals falling like snow, warm spring sunlight, soft bokeh background, nostalgic anime vibe",
+        "便利店 (Convenience Store)": "inside a bright convenience store at night, rows of colorful products, cold fluorescent lighting, reflection on glass window",
+        "学校天台 (School Rooftop)": "anime school rooftop at dusk, chain link fence, cumulus clouds in orange sky, wind blowing, sentimental atmosphere",
+        "雨中巴士 (Bus Interior)": "inside a bus during rain, water droplets on window, blurred city lights outside, melancholic blue tone, condensation",
+        "摄影棚 (Photo Studio)": "professional photo studio, seamless paper background, softbox lighting, rembrandt lighting, high contrast, clean look",
+        "和室 (Tatami Room)": "traditional japanese tatami room, sunlight filtering through shoji screens, tea set on low table, dust particles dancing in light",
+
+        // --- 幻想与特殊 ---
+        "赛博夜市 (Cyberpunk City)": "futuristic cyberpunk city, towering skyscrapers, holographic advertisements, neon pink and blue lights, steam rising from vents, high tech grime",
+        "异世界酒馆 (Fantasy Tavern)": "medieval fantasy tavern, warm candlelight, wooden beams, beer mugs, fireplace crackling, cozy and lively atmosphere",
+        "废土遗迹 (Post-Apoc)": "overgrown post-apocalyptic ruins, cracked concrete, moss and vines, rusted metal, god rays through collapsed ceiling, lonely atmosphere",
+        "魔法图书馆 (Magic Library)": "grand magical library, endless bookshelves, floating books, glowing orbs, mystical dust, hogwarts aesthetics",
+        "浩瀚宇宙 (Deep Space)": "floating in deep space, backdrop of colorful nebula and distant stars, planet curve visible, cold cinematic lighting",
+        "深海 (Underwater)": "underwater scene, caustic light patterns on skin, rising air bubbles, floating hair, deep blue ocean background, coral reef",
+
+        // --- 自然风光 ---
+        "海边夕阳 (Sunset Beach)": "tropical beach at golden hour, sun setting over horizon, sparkling ocean waves, lens flare, warm orange glow, wet sand",
+        "日式温泉 (Onsen)": "outdoor hot spring (onsen), rising steam, bamboo fence, snow falling, serene nature, rocks and water ripples",
+        "花海 (Flower Field)": "endless field of sunflowers, bright noon sunlight, blue sky with white clouds, wind blowing through grass, vibrant colors",
+        "夏日祭典 (Summer Festival)": "japanese summer festival at night, paper lanterns glowing, fireworks exploding in sky, festival stalls, lively crowd"
+    },
+            
+    effects: {
+                "丁达尔光 (God Rays)": "crepuscular rays, volumetric lighting, god rays",
+                "生物荧光 (Bioluminescence)": "bioluminescent particles, glowing blue specks",
+                "火焰特效 (Fire)": "surrounded by fire, flames, embers",
+                "雷电环绕 (Lightning)": "lightning arcs, electric aura, high voltage",
+                "胶片颗粒 (Film Grain)": "retro film grain, noise, vintage aesthetic",
+                "色差故障 (Glitch)": "chromatic aberration, glitch effect, cyber distortion, VHS artifact",
+                "樱花飘落 (Falling Petals)": "falling cherry blossom petals, sakura storm, romantic wind, pink particles",
+                "大光圈 (Bokeh)": "strong bokeh, depth of field, blurred background, focus on subject",
+                "镜头光晕 (Lens Flare)": "cinematic lens flare, optical flare, bright light source, sun star",
+                "水珠湿身 (Wet)": "wet skin, water droplets, soaked clothes, sweating, shiny skin",
+                "羽毛飘落 (Feathers)": "falling white feathers, angelic atmosphere, floating feathers",
+                "漫天飞雪 (Snowing)": "falling snow, snowflakes, winter atmosphere, cold breath",
+                "魔法阵 (Magic Circle)": "glowing magic circle on ground, intricate geometric patterns, arcane symbols",
+                "闪闪发光 (Sparkles)": "sparkles, kirakira, particles, magical dust, shiny atmosphere",
+                "黑暗气场 (Dark Aura)": "dark ominous aura, purple smoke, shadows, menacing pressure",
+                "动态模糊 (Motion Blur)": "motion blur, speed lines, dynamic movement, action focus"
+            },
+            
+    shots: {
+                "特写 (Close-up)": "a close-up portrait focusing on the face and expression, cutting off at the shoulders",
+                "半身 (Medium Shot)": "a medium shot capturing the character from the waist up",
+                "全身 (Full Body)": "a wide full-body shot showing the character completely from head to toe, ensuring the shoes and feet are fully visible within the frame",
+                "大远景 (Long Shot)": "a long shot with the character small in the frame, emphasizing the vast environment",
+                "牛仔景别 (Cowboy Shot)": "a cowboy shot framing the character from mid-thigh up"
+            },
+            // === 2. 新增：罩杯数据库 (用户指定) ===
+    CUPS: {
+            "A": {
+                label: "A Cup",
+                prompt: "Bust volume is small and close to the ribcage profile. Subtle curvature with minimal gravitational sag. Underbust boundary and shadow are faint. In most outfits, the silhouette change is modest."
+            },
+            "B": {
+                label: "B Cup",
+                prompt: "Bust volume is modest and clearly present. Stable contour in neutral posture with light gravitational influence. Underbust boundary is mild; shadow is soft."
+            },
+            "C": {
+                label: "C Cup",
+                prompt: "Bust volume is medium and balanced against the torso. Clear, natural contour with moderate gravitational influence. Underbust boundary becomes visible in many angles."
+            },
+            "D": {
+                label: "D Cup",
+                prompt: "Bust volume is medium-large and distinctly visible relative to the torso. Gravitational load produces a clearer underbust boundary and natural underbust shadow. The silhouette is visibly shaped by volume."
+            },
+            "E": {
+                label: "E Cup",
+                prompt: "Bust volume is large and immediately apparent. Underbust boundary and contact with the torso are more pronounced due to weight and volume. Fabric tension and shape-conforming behavior appear."
+            },
+            "F": {
+                label: "F Cup",
+                prompt: "Bust volume is very large and becomes a major contributor to upper-body silhouette. Gravitational influence is strong, creating a stable and clearly defined underbust boundary."
+            },
+            "G": {
+                label: "G Cup",
+                prompt: "Bust volume is extremely large and dominates the upper-body massing. Weight and volume significantly affect shape; the underbust boundary and natural shadow are consistently visible."
+            }
+            },
+            // === 1. 新增：体型数据库 (用户指定) ===
+    SHAPES: {
+            "Slender": {
+                label: "Slender (女团腿)",
+                prompt: "(slender idol physique:1.3), (A4 waist:1.2), flat tummy, slender long legs, delicate shoulders, streamlined body line, (feminine and fragile:1.1)"
+            },
+            "Athletic": {
+                label: "Fit (瑜伽/马甲线)",
+                prompt: "(fit yoga body:1.2), (11-line abs:1.2), toned but slender limbs, healthy skin glow, taut tummy, athletic chic, energetic vibe"
+            },
+            "Soft": {
+                label: "Marshmallow (棉花糖/微胖)",
+                prompt: "(soft marshmallow body:1.3), (fleshy thighs:1.2), (plump and curvy:1.2), soft skin texture, feminine curves, huggable body"
+            },
+            "Petite": {
+                label: "Petite (二次元娇小)",
+                prompt: "(petite and cute frame:1.3), short stature, (small head to body ratio:1.2), delicate joints, youthful proportions, kawaii aesthetic"
+            }
+        }
+};

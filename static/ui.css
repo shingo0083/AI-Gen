@@ -1,0 +1,259 @@
+        /* === PS5 核心动态背景 === */
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* 模拟 PS5 的流体极光背景 */
+        .aurora-bg {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.15), transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.15), transparent 40%),
+                radial-gradient(circle at 20% 80%, rgba(56, 189, 248, 0.15), transparent 40%);
+            filter: blur(80px);
+            animation: aurora-move 20s infinite alternate linear;
+            z-index: 0;
+        }
+
+        /* 细微的网格纹理叠加 */
+        .noise-overlay {
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @keyframes aurora-move {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-10%, -10%) rotate(5deg); }
+        }
+
+        /* === 玻璃态组件 === */
+        .ps5-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* === 交互动效 === */
+        .hover-glow:hover {
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.02);
+        }
+
+        /* === 输入框风格 === */
+        .ps5-input {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+        .ps5-input:focus {
+            background: rgba(0, 0, 0, 0.6);
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+            outline: none;
+        }
+
+        /* 下拉菜单 */
+        .ps5-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+        .ps5-select option, .ps5-select optgroup {
+            background-color: #1a1a1a;
+            color: #e5e5e5;
+        }
+
+        /* === Scroll Areas: two variants === */
+        /* 默认滚动区：保留原生滚动条（更稳定） */
+        .scroll-area {
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        /* 隐藏滚动条：仍可滚动（用于你想要“干净 UI”的地方） */
+        .scroll-area--hidden {
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+            -ms-overflow-style: none;      /* IE/Edge legacy */
+            scrollbar-width: none;         /* Firefox */
+        }
+        .scroll-area--hidden::-webkit-scrollbar {
+            width: 0 !important;
+            height: 0 !important;
+            display: none;
+        }
+        /* === Scrollbar skin (only for .scroll-area) === */
+        /* WebKit browsers: Chrome/Edge/Safari */
+        .scroll-area::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        .scroll-area::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .scroll-area::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.14);
+            border-radius: 999px;
+            border: 2px solid rgba(0, 0, 0, 0.35); /* 让拇指看起来“悬浮” */
+        }
+
+        .scroll-area::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.22);
+        }
+  
+        .scroll-area::-webkit-scrollbar-corner {
+            background: transparent;
+        }
+
+        /* Firefox: 只能做轻量级（不能像 WebKit 那样细调） */
+        .scroll-area {
+            scrollbar-color: rgba(255,255,255,0.22) rgba(255,255,255,0.06);
+            scrollbar-width: thin;
+        }
+  
+        
+        /* 加载动画 */
+        .ps5-loader {
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Vue 过渡 */
+        .fade-enter-active, .fade-leave-active { transition: opacity 0.5s ease; }
+        .fade-enter-from, .fade-leave-to { opacity: 0; }
+        
+        .slide-up-enter-active, .slide-up-leave-active { transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1); }
+        .slide-up-enter-from, .slide-up-leave-to { transform: translateY(100%); opacity: 0; }
+
+        /* === 灵动岛 (Dynamic Shell) - 物理重构版 === */
+        .dynamic-island-container {
+            /* 初始尺寸 */
+            width: 128px;
+            height: 40px;
+            
+            /* 玻璃态背景 */
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            background: rgba(0, 0, 0, 0.6);
+            
+            /* 边框与阴影 */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 99px; /* 胶囊圆角 */
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 10px 40px rgba(0, 0, 0, 0.3);
+            
+            /* 🚀 核心动画：模拟弹簧物理 */
+            /* width 和 height 分开过渡，width 稍慢一点产生错落感 */
+            transition: 
+                width 0.5s cubic-bezier(0.19, 1, 0.22, 1), 
+                height 0.5s cubic-bezier(0.19, 1, 0.22, 1),
+                background 0.3s ease,
+                border-radius 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            
+            /* 布局居中 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* 展开时从顶部开始对齐 */
+            overflow: hidden; /* 必须隐藏，防止内容在动画时溢出 */
+            z-index: 50;
+        }
+
+        /* === 悬停展开状态 === */
+        .dynamic-island-container:hover {
+            /* 1. 展开宽度 */
+            width: 520px; 
+            
+            /* 2. 关键：设定固定高度 (不能用 auto) 以实现丝滑过渡 */
+            height: 280px; 
+            
+            /* 3. 样式变更 */
+            background: rgba(8, 8, 10, 0.95); /* 深邃黑 */
+            border-color: rgba(139, 92, 246, 0.4); /* 激活时的紫色边框 */
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(139, 92, 246, 0.2);
+            border-radius: 24px; /* 变为矩形圆角 */
+        }
+
+        /* === 内部元素动画控制 === */
+
+        /* 1. 待机图标 (Core Idle) */
+        .island-idle-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 40px; /* 和初始高度一致 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.2s ease; /* 快速消失 */
+            opacity: 1;
+        }
+        
+        /* 展开时立即隐藏待机内容 */
+        .dynamic-island-container:hover .island-idle-content {
+            opacity: 0;
+            pointer-events: none;
+            transition-delay: 0s;
+        }
+
+        /* 2. 展开后的内容 (Shell) */
+        .shell-content {
+            width: 100%;
+            height: 100%;
+            padding: 24px; /* 增加内边距 */
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transform: scale(0.95) translateY(10px); /* 稍微缩小并下沉 */
+            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+            transition-delay: 0.1s; /* 等盒子变大一点再显示 */
+        }
+
+        /* 展开时显示内容 */
+        .dynamic-island-container:hover .shell-content {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            transition-delay: 0.15s; /* 错峰显示 */
+        }
+
+        /* 呼吸灯 */
+        .siri-glow {
+            width: 60px;
+            height: 20px;
+            background: linear-gradient(90deg, #3b82f6, #a855f7, #ec4899);
+            filter: blur(12px);
+            border-radius: 20px;
+            opacity: 0.5;
+            animation: breathe 3s ease-in-out infinite;
+        }
+        @keyframes breathe {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
